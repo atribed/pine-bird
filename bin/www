@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+var app = require('../app');
+var http = require('http');
+
+var port = process.env.PORT || '5000';
+app.set('port', port);
+
+var server = http.createServer(app);
+server.listen(port);
+server.on('error', function(err) {
+  if (error.code === 'EADDRINUSE') {
+    console.error(port + ' already in use.');
+    process.exit(1);
+  } else {
+    throw err;
+  }
+});
+
+server.on('listening', function() {
+  console.log('Listening on ' + port);
+});
