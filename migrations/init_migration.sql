@@ -17,13 +17,14 @@ CREATE TABLE descriptor_type (
 
 CREATE TABLE descriptor (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  descriptor_type_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(240)
 );
 
 CREATE TABLE bird_x_descriptor (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   bird_id INT(6) UNSIGNED,
-  descriptor_id INT(6) UNSIGNED,
-  descriptor_type_id INT(6) UNSIGNED
+  descriptor_id INT(6) UNSIGNED
 );
 
 CREATE TABLE season (
@@ -42,8 +43,8 @@ INSERT INTO descriptor_type (
   name
 ) VALUES (
   (1, color),
-  (2, call),
-  (3, size)
+  (2, size),
+  (3, call)
 );
 
 INSERT INTO season (
@@ -53,5 +54,6 @@ INSERT INTO season (
   (1, 'winter'),
   (2, 'spring'),
   (3, 'summer'),
-  (4, 'fall')
+  (4, 'fall'),
+  (5, 'all season')
 );
