@@ -8,7 +8,7 @@ INSERT INTO bird (
   wing_span,
   weight,
   migrates
-) VALUES (
+) VALUES
   (
     1,
     'Red-tailed Hawk',
@@ -36,25 +36,25 @@ INSERT INTO bird (
     'Gray bird with a brown spot on its rump. Small-ish.',
     9.25,
     15,
-    2.3
-  )
-);
+    2.3,
+    0
+  );
 
 INSERT INTO bird_x_season (
   bird_id,
   season_id
-) VALUES (
+) VALUES
   (1, 5),
   (3, 5),
   (2, 2),
   (2, 3)
-);
+;
 
 INSERT INTO descriptor (
   id,
   descriptor_type_id,
   name
-) VALUES (
+) VALUES
   (1, 1, 'brown'),
   (2, 1, 'red'),
   (3, 1, 'orange'),
@@ -70,13 +70,12 @@ INSERT INTO descriptor (
   (13, 3, 'peek'),
   (14, 3, 'peech'),
   (15, 3, 'kweek'),
-  (16, 1, 'black')
-);
+  (16, 1, 'black');
 
 INSERT INTO bird_x_descriptor (
   bird_id,
   descriptor_id
-) VALUES (
+) VALUES
   (1, 1),
   (1, 2),
   (1, 3),
@@ -95,4 +94,4 @@ INSERT INTO bird_x_descriptor (
   (3, 13),
   (3, 14),
   (3, 15)
-);
+;
