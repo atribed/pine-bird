@@ -3,9 +3,9 @@ CREATE TABLE bird (
   name VARCHAR(240),
   scientific_name VARCHAR(240),
   description TEXT,
-  length FLOAT(3,1),
-  wing_span FLOAT(3,1),
-  weight FLOAT(3,2),
+  length FLOAT(6,1),
+  wing_span FLOAT(6,1),
+  weight FLOAT(6,2),
   migrates TINYINT(1),
   img VARCHAR(400) DEFAULT NULL,
   KEY i_name(name)
@@ -23,7 +23,7 @@ CREATE TABLE descriptor (
   FOREIGN KEY (descriptor_type_id) REFERENCES descriptor_type(id)
 );
 
-CREATE TABLE bird_x_descriptor (
+CREATE TABLE bird_descriptor (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   bird_id INT(6) UNSIGNED,
   descriptor_id INT(6) UNSIGNED,
@@ -36,7 +36,7 @@ CREATE TABLE season (
   name VARCHAR(40)
 );
 
-CREATE TABLE bird_x_season (
+CREATE TABLE bird_season (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   bird_id INT(6) UNSIGNED,
   season_id INT(6) UNSIGNED,
@@ -47,8 +47,8 @@ CREATE TABLE bird_x_season (
 INSERT INTO descriptor_type (id, name) VALUES (1, 'color'), (2, 'size'), (3, 'call');
 
 INSERT INTO season (id, name) VALUES
-    (1, 'winter'),
-    (2, 'spring'),
-    (3, 'summer'),
-    (4, 'fall'),
-    (5, 'all season');
+  (1, 'winter'),
+  (2, 'spring'),
+  (3, 'summer'),
+  (4, 'fall'),
+  (5, 'all season');
