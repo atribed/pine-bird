@@ -21,7 +21,8 @@
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",

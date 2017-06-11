@@ -3,11 +3,33 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-
 var Container = require('./components/container');
 
 var containerDiv = document.getElementById('pine-birds');
-ReactDOM.render(React.createElement(Container, null), containerDiv);
+
+if (containerDiv) {
+  // Let's get some bird data
+  var birdData = {};
+
+  fetch('/api/all', {
+    method: 'GET'
+  }).then(function (response) {
+    return response.text();
+  }).then(function (data) {
+    birdData = window.JSON.parse(data);
+    ReactDOM.render(React.createElement(Container, {
+      birds: birdData.birds,
+      seasons: birdData.seasons,
+      colors: birdData.colors,
+      calls: birdData.calls,
+      sizes: birdData.sizes
+    }), containerDiv);
+  }).catch(function (err) {
+    console.log(err);
+  });
+
+  ReactDOM.render(React.createElement(Container, { data: birdData }), containerDiv);
+}
 
 },{"./components/container":2,"react":182,"react-dom":31}],2:[function(require,module,exports){
 'use strict';
