@@ -16,17 +16,19 @@ module.exports = {
   getAllData: function(req, res)  {
     var data = {};
 
-
-    console.log(bird);
     var birds = bird.fetchAll();
     var seasons = season.fetchAll();
-    var descriptors = descriptor.fetchAll();
 
+    var color = descriptor.where('descriptor_type_id', '1').fetchAll();
+    var size = descriptor.where('descriptor_type_id', '2').fetchAll();
+    var call = descriptor.where('descriptor_type_id', '3').fetchAll();
 
-    Promise.all([birds, seasons, descriptors]).then(function(values) {
+    Promise.all([birds, seasons, color, size, call]).then(function(values) {
       data.birds = values[0];
       data.seasons = values[1];
-      data.descriptors = values[2];
+      data.color = values[2];
+      data.size = values[3];
+      data.call = values[4];
 
       res.send(data);
     });
