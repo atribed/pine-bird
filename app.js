@@ -17,7 +17,10 @@ app.use(errorhandler());
 
 // Routing
 var index = require('./routes/index');
+var api   = require('./routes/api');
+
 app.use('/', index);
+app.use('/api', api);
 
 // Setup static path
 app.use(express.static(path.join(__dirname + '/static')));
