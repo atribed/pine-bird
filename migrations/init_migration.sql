@@ -50,5 +50,4 @@ INSERT INTO season (id, name) VALUES
   (1, 'winter'),
   (2, 'spring'),
   (3, 'summer'),
-  (4, 'fall'),
-  (5, 'all season');
+  (4, 'fall');
