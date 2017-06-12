@@ -1,5 +1,7 @@
 var bookshelf = require('../bookshelf');
 
+require('./bird');
+
 var Descriptor = bookshelf.Model.extend({
   tableName: 'descriptor',
   birds: function() {
@@ -7,4 +9,4 @@ var Descriptor = bookshelf.Model.extend({
   }
 });
 
-module.exports = Descriptor;
+module.exports = bookshelf.model('Descriptor', Descriptor);

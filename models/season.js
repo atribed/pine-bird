@@ -4,6 +4,8 @@
 
 var bookshelf = require('../bookshelf');
 
+require('./bird');
+
 var Season = bookshelf.Model.extend({
   tableName: 'season',
   birds: function() {
@@ -11,4 +13,4 @@ var Season = bookshelf.Model.extend({
   }
 });
 
-module.exports = Season;
+module.exports = module.exports = bookshelf.model('Season', Season);
