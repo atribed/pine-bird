@@ -16,4 +16,7 @@ var bookshelf = require('bookshelf')(knex);
 // Helps with circular dependencies when requiring models for relationships
 bookshelf.plugin('registry');
 
+// Virtual plugin for computed values
+bookshelf.plugin('virtuals');
+
 module.exports = bookshelf;
