@@ -40,7 +40,7 @@ INSERT INTO bird (
     0
   );
 
-INSERT INTO bird_x_season (
+INSERT INTO bird_season (
   bird_id,
   season_id
 ) VALUES
@@ -61,24 +61,24 @@ INSERT INTO descriptor (
   descriptor_type_id,
   name
 ) VALUES
-  (1, 1, 'brown'),
-  (2, 1, 'red'),
-  (3, 1, 'orange'),
-  (4, 1, 'white'),
-  (5, 1, 'gray'),
-  (6, 2, 'small'),
-  (7, 2, 'medium'),
-  (8, 2, 'large'),
-  (9, 3, 'cheeeeeew'),
-  (10, 3, 'mwee'),
-  (11, 3, 'meeurr'),
-  (12, 3, 'whurf'),
-  (13, 3, 'peek'),
-  (14, 3, 'peech'),
-  (15, 3, 'kweek'),
-  (16, 1, 'black');
+  (1, 1, 'Brown'),
+  (2, 1, 'Red'),
+  (3, 1, 'Orange'),
+  (4, 1, 'White'),
+  (5, 1, 'Gray'),
+  (6, 2, 'Small'),
+  (7, 2, 'Medium'),
+  (8, 2, 'Large'),
+  (9, 3, 'Cheeeeeew'),
+  (10, 3, 'Mwee'),
+  (11, 3, 'Meeurr'),
+  (12, 3, 'Whurf'),
+  (13, 3, 'Peek'),
+  (14, 3, 'Peech'),
+  (15, 3, 'Kweek'),
+  (16, 1, 'Black');
 
-INSERT INTO bird_x_descriptor (
+INSERT INTO bird_descriptor (
   bird_id,
   descriptor_id
 ) VALUES
