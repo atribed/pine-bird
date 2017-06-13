@@ -130,7 +130,7 @@ class Container extends React.Component {
           this.state.activeSeasons.map(function(season) {
             return <BirdSelectedAttr
                 key={season}
-                name={season}
+                name={this.state.seasons[season].name}
                 attrId={season}
                 birdAttrRemoved={this.birdAttrRemoved.bind(this)}
                 birdAttr="activeSeasons" />

@@ -62,13 +62,13 @@ function BirdFilterResult(props) {
       { className: "6 columns" },
       React.createElement(
         "span",
-        null,
+        { className: "pb--bold" },
         props.name
       ),
       ", ",
       React.createElement(
         "span",
-        null,
+        { className: "pb--italic" },
         props.scientificName
       )
     ),
@@ -94,9 +94,13 @@ var React = require('react');
 function BirdSelectedAttr(props) {
   return React.createElement(
     "div",
-    { className: "two columns button button-primary", onClick: props.birdAttrRemoved, "data-attr-id": props.attrId, "data-bird-attr": props.birdAttr, key: props.attrId },
-    props.name,
-    React.createElement("img", { src: "/img/remove.svg" })
+    { className: "two columns button button-primary pb--margin-right-4-perc pb--margin-left-0 pb--pos-relative pb--padding-left-0", onClick: props.birdAttrRemoved, "data-attr-id": props.attrId, "data-bird-attr": props.birdAttr, key: props.attrId },
+    React.createElement(
+      "span",
+      { className: "selected-attr__text pb--padding-left-2" },
+      props.name
+    ),
+    React.createElement("img", { src: "/img/remove.svg", className: "selected-attr__x-img pb--pos-absolute pb--absolute-center-vert" })
   );
 }
 
@@ -277,7 +281,7 @@ var Container = function (_React$Component) {
           this.state.activeSeasons.map(function (season) {
             return React.createElement(BirdSelectedAttr, {
               key: season,
-              name: season,
+              name: this.state.seasons[season].name,
               attrId: season,
               birdAttrRemoved: this.birdAttrRemoved.bind(this),
               birdAttr: 'activeSeasons' });
