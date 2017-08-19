@@ -17,14 +17,12 @@ class Container extends React.Component {
     super(props);
 
     this.state = {
-      seasons: {},
       descriptors: {},
       birds: [],
       sizeIds: [],
       colorIds: [],
       callIds: [],
       seasonIds: [],
-      activeSeasons: [],
       activeDescriptors: []
     };
   }
@@ -40,9 +38,7 @@ class Container extends React.Component {
         colorIds: json.colorIds,
         callIds: json.callIds,
         seasonIds: json.seasonIds,
-        seasons: json.seasons,
         descriptors: json.descriptors,
-        activeSeasons: [],
         activeDescriptors: []
       });
     }.bind(this));
@@ -95,13 +91,9 @@ class Container extends React.Component {
   filterBirds() {
     var birds = [];
 
-    if (this.state.activeDescriptors.length || this.state.activeSeasons.length) {
+    if (this.state.activeDescriptors.length) {
       this.state.birds.forEach(function(bird) {
         if (!this.state.activeDescriptors.every(function(id) {return bird.descriptorIds.indexOf(id) > -1})) {
-          return;
-        }
-
-        if (!this.state.activeSeasons.every(function(id) {return bird.seasonIds.indexOf(id) > -1})) {
           return;
         }
 
@@ -119,29 +111,14 @@ class Container extends React.Component {
   render() {
     var filteredBirds = this.filterBirds();
 
-    var selectedSeasons = '';
     var selectedDescriptors = '';
     var filteredBirdComponents = '';
 
-    if (this.state.activeSeasons.length) {
-      selectedSeasons = <div className="row">
-        <h4>Selected Seasons</h4>
-        {
-          this.state.activeSeasons.map(function(season) {
-            return <BirdSelectedAttr
-                key={season}
-                name={this.state.seasons[season].name}
-                attrId={season}
-                birdAttrRemoved={this.birdAttrRemoved.bind(this)}
-                birdAttr="activeSeasons" />
-          }, this)
-        }
-      </div>
-    }
+    console.log(this.state);
 
     if (this.state.activeDescriptors.length) {
       selectedDescriptors = <div className="row">
-        <h4>Selected Bird Attributes</h4>
+        <h4>Your Bird Description</h4>
         {
           this.state.activeDescriptors.map(function(descriptorId) {
             return <BirdSelectedAttr
@@ -149,7 +126,8 @@ class Container extends React.Component {
                 name={this.state.descriptors[descriptorId].name}
                 attrId={descriptorId}
                 birdAttrRemoved={this.birdAttrRemoved.bind(this)}
-                birdAttr="activeDescriptors" />
+                birdAttr="activeDescriptors"
+                className="" />
           }, this)
         }
       </div>
@@ -177,14 +155,16 @@ class Container extends React.Component {
 
             <BirdAttrDropdown
                 attributeIds={this.state.seasonIds}
-                attributes={this.state.seasons}
-                label="Season"
+                attributes={this.state.descriptors}
+                activeDescriptors={this.state.activeDescriptors}
+                label="Seasons"
                 handleChange={this.birdAttrSelected.bind(this)}
-                birdAttr="activeSeasons" />
+                birdAttr="activeDescriptors" />
 
             <BirdAttrDropdown
                 attributeIds={this.state.sizeIds}
                 attributes={this.state.descriptors}
+                activeDescriptors={this.state.activeDescriptors}
                 label="Size"
                 handleChange={this.birdAttrSelected.bind(this)}
                 birdAttr="activeDescriptors" />
@@ -192,6 +172,7 @@ class Container extends React.Component {
             <BirdAttrDropdown
                 attributeIds={this.state.colorIds}
                 attributes={this.state.descriptors}
+                activeDescriptors={this.state.activeDescriptors}
                 label="Colors"
                 handleChange={this.birdAttrSelected.bind(this)}
                 birdAttr="activeDescriptors" />
@@ -199,6 +180,7 @@ class Container extends React.Component {
             <BirdAttrDropdown
                 attributeIds={this.state.callIds}
                 attributes={this.state.descriptors}
+                activeDescriptors={this.state.activeDescriptors}
                 label="Call"
                 handleChange={this.birdAttrSelected.bind(this)}
                 birdAttr="activeDescriptors" />
@@ -206,8 +188,6 @@ class Container extends React.Component {
           </div>
 
           {selectedDescriptors}
-
-          {selectedSeasons}
 
           {filteredBirdComponents}
 

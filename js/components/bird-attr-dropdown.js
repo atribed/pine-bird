@@ -5,11 +5,12 @@ function BirdAttrDropdown(props) {
       <div className="twelve columns">
         <label>{props.label}</label>
         <select className="u-full-width" onChange={props.handleChange} data-bird-attr={props.birdAttr}>
-          <option disabled selected value>Select a {props.label}...</option>
+          <option disabled selected={true} value>Select a {props.label}...</option>
           {
             props.attributeIds.map(function(attributeId) {
+              var disabled = props.activeDescriptors.indexOf(attributeId) > -1 ? 'disabled' : '';
               return (
-                  <option value={attributeId} key={attributeId}>{props.attributes[attributeId].name}</option>
+                  <option disabled={disabled} value={attributeId} key={attributeId}>{props.attributes[attributeId].name}</option>
               );
             })
           }
