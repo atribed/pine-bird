@@ -44,10 +44,4 @@ CREATE TABLE bird_season (
   FOREIGN KEY (season_id) REFERENCES season(id)
 );
 
-INSERT INTO descriptor_type (id, name) VALUES (1, 'color'), (2, 'size'), (3, 'call');
-
-INSERT INTO season (id, name) VALUES
-  (1, 'winter'),
-  (2, 'spring'),
-  (3, 'summer'),
-  (4, 'fall');
+INSERT INTO descriptor_type (id, name) VALUES (1, 'color'), (2, 'size'), (3, 'call'), (4, 'season');

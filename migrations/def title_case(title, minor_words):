@@ -1,0 +1,15 @@
+def title_case(title, minor_words):
+    if len(title) == 0:
+        return ''
+    title_words = title.split(' ')
+    omitted_words = [word.lower() for word in minor_words.split(' ')]
+
+    for index, word in enumerate(title_words):
+        word = word.lower()
+        if index == 0 or word not in omitted_words:
+            word = word[0].upper()
+        title_words[index] = word
+
+    return words.join(' ')
+
+
