@@ -20,27 +20,24 @@ module.exports = {
       withRelated: [
         {descriptors: function(qb) {
           qb.column(['descriptor.id']);
-        }},
-        {seasons: function(qb) {
-          qb.column(['season.id']);
         }}
       ]
     });
 
-    var seasons = season.fetchAll();
     var descriptors = descriptor.fetchAll();
 
-    Promise.all([birds, seasons, descriptors]).then(function(values) {
+    Promise.all([birds, descriptors]).then(function(values) {
 
       var descriptors = {};
       var colorIds = [];
       var sizeIds = [];
       var callIds = [];
+      var seasonIds = [];
 
       var count = 0;
 
       // TODO: Need to clean this up, quick and dirty for now.
-      values[2].forEach(function(descriptor) {
+      values[1].forEach(function(descriptor) {
         switch(descriptor.get('descriptor_type_id')) {
           case 1:
             descriptors[descriptor.id] = descriptor;
@@ -56,17 +53,14 @@ module.exports = {
             descriptors[descriptor.id] = descriptor;
             callIds.push(descriptor.id);
             count++;
+            break;
+          case 4:
+            descriptors[descriptor.id] = descriptor;
+            seasonIds.push(descriptor.id);
+            count++;
         }
       });
 
-      var seasons = {};
-      var seasonIds = [];
-      values[1].forEach(function(season) {
-        seasons[season.id] = season;
-        seasonIds.push(season.id);
-      });
-
-      data.seasons = seasons;
       data.seasonIds = seasonIds;
       data.descriptors = descriptors;
       data.colorIds = colorIds;
