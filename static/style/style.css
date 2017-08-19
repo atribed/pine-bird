@@ -73,3 +73,58 @@
 .pb--text-center {
   text-align: center;
 }
+
+.pb--text-white {
+  color: #fff;
+}
+
+/* Buttons */
+
+.pb__button--green {
+  background-color: #1BC98E;
+  border: #1BC98E;
+  color: #fff;
+}
+
+.pb__button--green:hover {
+  opacity: .8;
+  color: #fff;
+}
+
+.pb__button--green:focus {
+  color: #fff;
+}
+
+.pb__button--red {
+  background-color: #e64759;
+  border: #e64759;
+  color: #fff;
+}
+
+.pb__button--red:hover {
+  opacity: .8;
+  color: #fff;
+}
+
+.pb__button--red:focus {
+  color: #fff;
+}
+
+.pb__button--blue {
+  background-color: #33C3F0;
+  border: #33C3F0;
+  color: #fff;
+}
+
+.pb__button--blue:hover {
+  opacity: .8;
+  color: #fff;
+}
+
+.pb__button--blue:focus {
+  color: #fff;
+}
+
+.pb--opacity-8 {
+  opacity: .8;
+}
