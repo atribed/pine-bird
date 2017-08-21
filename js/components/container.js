@@ -2,7 +2,7 @@ var React = require('react');
 var fetchival = require('fetchival');
 var BirdAttrDropdown = require('./bird-attr-dropdown');
 var BirdFilterResult = require('./bird-filter-result');
-var BirdSelectedAttr = require('./bird-selected-attr');
+var BirdSummary      = require('./bird-description');
 
 /**
  * Container component to house the logic and call all the child components.
@@ -110,31 +110,23 @@ class Container extends React.Component {
    */
   render() {
     var filteredBirds = this.filterBirds();
-
-    var selectedDescriptors = '';
     var filteredBirdComponents = '';
-
-    console.log(this.state);
+    var birdSummary = '';
 
     if (this.state.activeDescriptors.length) {
-      selectedDescriptors = <div className="row">
-        <h4>Your Bird Description</h4>
-        {
-          this.state.activeDescriptors.map(function(descriptorId) {
-            return <BirdSelectedAttr
-                key={descriptorId}
-                name={this.state.descriptors[descriptorId].name}
-                attrId={descriptorId}
-                birdAttrRemoved={this.birdAttrRemoved.bind(this)}
-                birdAttr="activeDescriptors"
-                className="" />
-          }, this)
-        }
+      birdSummary = <div>
+          <h4>Your Bird Summary</h4>
+        <BirdSummary
+            activeDescriptors={this.state.activeDescriptors}
+            descriptors={this.state.descriptors}
+            removeCallback={this.birdAttrRemoved.bind(this)}
+
+        />
       </div>
     }
 
     if (filteredBirds.length) {
-      filteredBirdComponents = <div className="row">
+      filteredBirdComponents = <div className="row pb--margin-top-4">
         <h4>Some Likely Birds</h4>
         {
           filteredBirds.map(function(bird) {
@@ -187,7 +179,7 @@ class Container extends React.Component {
 
           </div>
 
-          {selectedDescriptors}
+          {birdSummary}
 
           {filteredBirdComponents}
 
